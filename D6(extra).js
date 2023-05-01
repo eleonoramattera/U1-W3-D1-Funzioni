@@ -1,23 +1,71 @@
-// Esercizi aggiuntivi (facoltativi) per D4
-
-/* EXTRA 1
+/* EXTRA 1 PASSARE FUNZIONE COME PARAMETRO DI UN'ALTRA FUNZIONE
  Scrivi una funzione chiamata "checkArray" che riceve un array di numeri casuali (creati con la funzione "giveMeRandom") e per ogni elemento stampa in console
  se il suo valore è maggiore di 5 o no.
  La funzione deve inoltre ritornare la somma di tutti i valori maggiori di 5.
 */
+console.log("----------ES 1 (PASSARE FUNZIONE COME PARAMETRO DI UN'ALTRA FUNZIONE-------------");
+function giveMeRandom(n) {
+  let arr = [];
+  for (let i = 0; i < n; i++) {
+    arr.push(Math.floor(Math.random() * 10));
+    console.log(arr);
+  }
+  return arr;
+}
+console.log(giveMeRandom(2));
 
+function checkArray(arrRandom) {
+  let arr = [];
+  for (let i = 0; i < arrRandom.length; i++) {
+    const elements = arrRandom[i];
+    if (elements >= 5) {
+      console.log("numero è >= di 5");
+    } else if (elements <= 5) {
+      console.log("numero <= 5");
+    }
+    arr.push(elements);
+  }
+}
 
+console.log(checkArray(giveMeRandom(4)));
 
-
-
-/* SCRIVI QUI LA TUA RISPOSTA */
-
-/* EXTRA 2
+/* EXTRA 2 (manca ancora qualche passaggio)
  Nel tuo eCommerce disponi di un'array di oggetti chiamato "shoppingCart". Ognuno di questi oggetti ha le seguenti proprietà: "price", "name", "id" e "quantity".
  Crea una funzione chiamata "shoppingCartTotal" che calcola il totale dovuto al negozio (tenendo conto delle quantità di ogni oggetto).
 */
+let shoppingCart = [
+  { price: 20, name: "scarpe", id: 657, quantity: 6 }, //120
+  { price: 40, name: "gonna", id: 756, quantity: 5 }, //200
+  { price: 10, name: "maglia", id: 567, quantity: 9 }, //90
+];
 
-/* SCRIVI QUI LA TUA RISPOSTA */
+function shoppingCartTotal(arr) {
+  let array = [];
+  for (let i = 0; i < arr.length; i++) {
+    const prezzoOgniElementoSingolo = arr[i].price;
+    //console.log("prezzoOgniElementoSingolo " + prezzoOgniElementoSingolo); //20 40 10
+    const quantitàOgniElemento = arr[i].quantity;
+    //console.log("quantitàOgniElemento " + quantitàOgniElemento); // 6 5 9
+    const prezzoTotOgniElemento = prezzoOgniElementoSingolo * quantitàOgniElemento;
+    // console.log("prezzoTotOgniElemento " + prezzoTotOgniElemento);
+    array = [];
+    array.push(prezzoTotOgniElemento);
+    //console.log(typeof array);
+    array.join("");
+    console.log(array);
+  }
+  return array;
+}
+
+console.log(shoppingCartTotal(shoppingCart));
+
+function calcolaTotProdottiXQuantita(ar) {
+  let result = ar.reduce((a, b) => a + b, 0);
+  return result;
+}
+s;
+
+console.log(calcolaTotProdottiXQuantita(shoppingCartTotal(shoppingCart)));
 
 /* EXTRA 3
  Nel tuo eCommerce disponi di un'array di oggetti chiamato "shoppingCart". Ognuno di questi oggetti ha le seguenti proprietà: "price", "name", "id" e "quantity".

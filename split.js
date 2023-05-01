@@ -18,8 +18,8 @@ console.log(stringa.trim);
 };
 capitalized("ciao tutti");
 */
-const tagliata = (stringg) => {
-  stringg.slice(1, stringg.length, -1);
-  return stringg;
+const tagliata = (str) => {
+  let result = str.slice(1, -1);
+  return result;
 };
-tagliata();
+console.log(tagliata("eleonora"));
