@@ -28,8 +28,8 @@ function checkArray(arrRandom) {
 }
 
 console.log(checkArray(giveMeRandom(4)));
-
-/* EXTRA 2 (manca ancora qualche passaggio)
+///////////////////////////////////////////////////////////////////////////////////////////
+/* EXTRA 2 (FATTO CON DESTRUTTURAZIONE ARRAY)
  Nel tuo eCommerce disponi di un'array di oggetti chiamato "shoppingCart". Ognuno di questi oggetti ha le seguenti proprietà: "price", "name", "id" e "quantity".
  Crea una funzione chiamata "shoppingCartTotal" che calcola il totale dovuto al negozio (tenendo conto delle quantità di ogni oggetto).
 */
@@ -38,48 +38,130 @@ let shoppingCart = [
   { price: 40, name: "gonna", id: 756, quantity: 5 }, //200
   { price: 10, name: "maglia", id: 567, quantity: 9 }, //90
 ];
+const [first, second, third] = shoppingCart;
+console.log(first);
+console.log(second);
+console.log(third);
 
-function shoppingCartTotal(arr) {
-  let array = [];
-  for (let i = 0; i < arr.length; i++) {
-    const prezzoOgniElementoSingolo = arr[i].price;
-    //console.log("prezzoOgniElementoSingolo " + prezzoOgniElementoSingolo); //20 40 10
-    const quantitàOgniElemento = arr[i].quantity;
-    //console.log("quantitàOgniElemento " + quantitàOgniElemento); // 6 5 9
-    const prezzoTotOgniElemento = prezzoOgniElementoSingolo * quantitàOgniElemento;
-    // console.log("prezzoTotOgniElemento " + prezzoTotOgniElemento);
-    array = [];
-    array.push(prezzoTotOgniElemento);
-    //console.log(typeof array);
-    array.join("");
-    console.log(array);
+function shoppingCartTotal(uno, due, tre) {
+  let prezzo1 = uno.price;
+  //console.log(prezzo1);
+  let prezzo2 = due.price;
+  //console.log(prezzo2);
+  let prezzo3 = tre.price;
+  //console.log(prezzo3);
+  let quantità1 = uno.quantity;
+  //console.log(quantità1);
+  let quantità2 = due.quantity;
+  //console.log(quantità2);
+  let quantità3 = tre.quantity;
+  //console.log(quantità3);
+  let prezzoTotElem1 = prezzo1 * quantità1;
+  //console.log(prezzoTotElem1);
+  let prezzoTotElem2 = prezzo2 * quantità2;
+  //console.log(prezzoTotElem2);
+  let prezzoTotElem3 = prezzo3 * quantità3;
+  //console.log(prezzoTotElem3);
+  let prezzoTotDovutoAlNegozio = prezzoTotElem1 + prezzoTotElem2 + prezzoTotElem3;
+  //console.log(prezzoTotDovutoAlNegozio);
+  return prezzoTotDovutoAlNegozio;
+}
+
+console.log(shoppingCartTotal(first, second, third));
+
+/*function shoppingCartTotal(arr) {
+    let array = [];
+    for (let i = 0; i < arr.length; i++) {
+      const prezzoOgniElementoSingolo = arr[i].price;
+      // console.log("prezzoOgniElementoSingolo " + prezzoOgniElementoSingolo); //20 40 10
+      // console.log(typeof prezzoOgniElementoSingolo);
+      const quantitàOgniElemento = arr[i].quantity;
+      //console.log("quantitàOgniElemento " + quantitàOgniElemento); // 6 5 9
+      const prezzoTotOgniElemento = prezzoOgniElementoSingolo * quantitàOgniElemento;
+      // console.log("prezzoTotOgniElemento " + prezzoTotOgniElemento);
+      array = [];
+      array.push(prezzoTotOgniElemento);
+      //console.log(typeof array);
+      array.join("");
+      // console.log(array);
+    }
+    //return array;
   }
-  return array;
-}
+  console.log(shoppingCartTotal(shoppingCart));
 
-console.log(shoppingCartTotal(shoppingCart));
+  
+  function calcolaTotProdottiXQuantita(ar) {
+    let result = ar.reduce((a, b) => a + b, 0);
+    return result;
+  }
+  console.log(calcolaTotProdottiXQuantita(shoppingCartTotal(shoppingCart)));
+  */
 
-function calcolaTotProdottiXQuantita(ar) {
-  let result = ar.reduce((a, b) => a + b, 0);
-  return result;
-}
-s;
-
-console.log(calcolaTotProdottiXQuantita(shoppingCartTotal(shoppingCart)));
-
+/////////////////////////////////////////////////////////////
 /* EXTRA 3
  Nel tuo eCommerce disponi di un'array di oggetti chiamato "shoppingCart". Ognuno di questi oggetti ha le seguenti proprietà: "price", "name", "id" e "quantity".
  Crea una funzione chiamata "addToShoppingCart" che riceve un nuovo oggetto dello stesso tipo, lo aggiunge a "shoppingCart" e ritorna il nuovo numero totale degli elementi.
 */
+//senza funzione
+shoppingCart = [
+  { price: 20, name: "scarpe", id: 657, quantity: 6 }, //120
+  { price: 40, name: "gonna", id: 756, quantity: 5 }, //200
+  { price: 10, name: "maglia", id: 567, quantity: 9 }, //90
+];
 
-/* SCRIVI QUI LA TUA RISPOSTA */
+let elemento = { price: 12, name: "pantalone", id: 652, quantity: 4 };
 
-/* EXTRA 4
+shoppingCart.push(elemento);
+console.log(shoppingCart);
+//con funzione
+function addToShoppingCart(paramArr, paramOgg) {
+  paramArr.push(paramOgg);
+  return paramArr;
+}
+console.log(addToShoppingCart(shoppingCart, elemento));
+///////////////////////////////////////////////////////////////////////////
+
+/* EXTRA 4 //ARRAY DI OGGETTI. COME ESTRAPOLARE PROPRIETA' CON IL FORLOOP
  Nel tuo eCommerce disponi di un'array di oggetti chiamato "shoppingCart". Ognuno di questi oggetti ha le seguenti proprietà: "price", "name", "id" e "quantity".
  Crea una funzione chiamata "maxShoppingCart" che riceve l'array "shoppingCart" e ritorna l'oggetto più costoso in esso contenuto.
 */
+shoppingCart = [
+  { price: 20, name: "scarpe", id: 657, quantity: 6 }, //120
+  { price: 40, name: "gonna", id: 756, quantity: 5 }, //200
+  { price: 10, name: "maglia", id: 567, quantity: 9 }, //90
+  { price: 12, name: "pantalone", id: 652, quantity: 4 }, //48
+];
 
-/* SCRIVI QUI LA TUA RISPOSTA */
+function maxShoppingCart(arr, prez) {
+  let output = [];
+  for (let i = 0; i < arr.length; i++) {
+    output.push(arr[i][prez]);
+    console.log(output);
+  }
+  let max = Math.max(...output);
+  console.log(max);
+
+  return max;
+}
+
+console.log(maxShoppingCart(shoppingCart, "price"));
+/*
+  objArray = [
+    { foo: 1, bar: 2 },
+    { foo: 3, bar: 4 },
+    { foo: 5, bar: 6 },
+  ];
+  /*I want to extract a field from each object, and get an array containing the values, for example field foo would give array [ 1, 3, 5 ].
+  //I can do this with this trivial approach:
+  
+  function getFields(input, field) {
+    var output = [];
+    for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
+    return output;
+  }
+  var result = getFields(objArray, "foo"); // returns [ 1, 3, 5 ]*/
+
+////////////////////////////////////////////////////////
 
 /* EXTRA 5
  Nel tuo eCommerce disponi di un'array di oggetti chiamato "shoppingCart". Ognuno di questi oggetti ha le seguenti proprietà: "price", "name", "id" e "quantity".
