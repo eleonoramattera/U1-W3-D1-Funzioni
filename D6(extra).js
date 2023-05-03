@@ -42,7 +42,7 @@ const [first, second, third] = shoppingCart;
 console.log(first);
 console.log(second);
 console.log(third);
-
+//PROVA 1
 function shoppingCartTotal(uno, due, tre) {
   let prezzo1 = uno.price;
   //console.log(prezzo1);
@@ -69,6 +69,7 @@ function shoppingCartTotal(uno, due, tre) {
 
 console.log(shoppingCartTotal(first, second, third));
 
+//PROVA 2
 /*function shoppingCartTotal(arr) {
     let array = [];
     for (let i = 0; i < arr.length; i++) {
@@ -97,6 +98,29 @@ console.log(shoppingCartTotal(first, second, third));
   console.log(calcolaTotProdottiXQuantita(shoppingCartTotal(shoppingCart)));
   */
 
+//PROVA 3
+function shoppingCartTotal(arr) {
+  let array = [];
+  for (let i = 0; i < arr.length; i++) {
+    const prezzoOgniElementoSingolo = arr[i].price;
+    //console.log("prezzoOgniElementoSingolo " + prezzoOgniElementoSingolo); //20 40 10
+    const quantitàOgniElemento = arr[i].quantity;
+    //console.log("quantitàOgniElemento " + quantitàOgniElemento); // 6 5 9
+    const prezzoTotOgniElemento = prezzoOgniElementoSingolo * quantitàOgniElemento;
+    //console.log("prezzoTotOgniElemento " + prezzoTotOgniElemento);
+    array.push(prezzoTotOgniElemento);
+    console.log("array" + array); //così ho array con prezzi tot degli elementi ovver0 120, 200, 90
+    //devo sommare questi valori
+  }
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i];
+    console.log("sum" + sum);
+  }
+
+  return sum;
+}
+console.log(shoppingCartTotal(shoppingCart));
 /////////////////////////////////////////////////////////////
 /* EXTRA 3
  Nel tuo eCommerce disponi di un'array di oggetti chiamato "shoppingCart". Ognuno di questi oggetti ha le seguenti proprietà: "price", "name", "id" e "quantity".
@@ -132,19 +156,25 @@ shoppingCart = [
   { price: 12, name: "pantalone", id: 652, quantity: 4 }, //48
 ];
 
-function maxShoppingCart(arr, prez) {
-  let output = [];
+function maxShoppingCart(arr, prez, nome) {
+  let outputPrezzo = []; //array che prende solo i prezzi
+  let outputProdotti = []; //array che prende nomi prodotti
   for (let i = 0; i < arr.length; i++) {
-    output.push(arr[i][prez]);
-    console.log(output);
+    outputPrezzo.push(arr[i][prez]);
+    console.log(outputPrezzo);
   }
-  let max = Math.max(...output);
+  for (let i = 0; i < arr.length; i++) {
+    outputProdotti.push(arr[i][nome]);
+    console.log(outputProdotti);
+  }
+  let max = Math.max(...outputPrezzo);
   console.log(max);
 
   return max;
 }
 
-console.log(maxShoppingCart(shoppingCart, "price"));
+console.log(maxShoppingCart(shoppingCart, "price", "name"));
+
 /*
   objArray = [
     { foo: 1, bar: 2 },
@@ -168,7 +198,17 @@ console.log(maxShoppingCart(shoppingCart, "price"));
  Crea una funzione chiamata "latestShoppingCart" che riceve l'array "shoppingCart" e ritorna l'ultimo elemento.
 */
 
-/* SCRIVI QUI LA TUA RISPOSTA */
+shoppingCart = [
+  { price: 20, name: "scarpe", id: 657, quantity: 6 }, //120
+  { price: 40, name: "gonna", id: 756, quantity: 5 }, //200
+  { price: 10, name: "maglia", id: 567, quantity: 9 }, //90
+  { price: 12, name: "pantalone", id: 652, quantity: 4 }, //48
+];
+
+function latestShoppingCart(arr) {
+  return arr.pop();
+}
+console.log(latestShoppingCart(shoppingCart));
 
 /* EXTRA 6
  Crea una funzione chiamata "loopUntil" che riceve un numero intero come parametro con valore tra 0 e 9.

@@ -1,4 +1,4 @@
-const upperFirstPhrase = function (str) {
+/*const upperFirstPhrase = function (str) {
   let words = str.split(" ");
   let finalString = [];
   for (let i = 0; i < words.length; i++) {
@@ -15,42 +15,19 @@ const upperFirstPhrase = function (str) {
   console.log(finalString.join(" "));
 };
 console.log("---------------------------------------------------------");
-upperFirstPhrase("hello world");
+upperFirstPhrase("hello world");*/
 
-/* EXTRA 2 (manca ancora qualche passaggio)
- Nel tuo eCommerce disponi di un'array di oggetti chiamato "shoppingCart". Ognuno di questi oggetti ha le seguenti proprietà: "price", "name", "id" e "quantity".
- Crea una funzione chiamata "shoppingCartTotal" che calcola il totale dovuto al negozio (tenendo conto delle quantità di ogni oggetto).
+/* EXTRA 6
+ Crea una funzione chiamata "loopUntil" che riceve un numero intero come parametro con valore tra 0 e 9.
+ La funzione è composta da un ciclo che stampa un numero casuale tra 0 e 9 finchè il numero casuale non è maggiore di x per tre volte di fila.
 */
-let shoppingCart = [
-  { price: 20, name: "scarpe", id: 657, quantity: 6 }, //120
-  { price: 40, name: "gonna", id: 756, quantity: 5 }, //200
-  { price: 10, name: "maglia", id: 567, quantity: 9 }, //90
-];
 
-function shoppingCartTotal(arr) {
-  let array = [];
-  for (let i = 0; i < arr.length; i++) {
-    const prezzoOgniElementoSingolo = arr[i].price;
-    //console.log("prezzoOgniElementoSingolo " + prezzoOgniElementoSingolo); //20 40 10
-    const quantitàOgniElemento = arr[i].quantity;
-    //console.log("quantitàOgniElemento " + quantitàOgniElemento); // 6 5 9
-    const prezzoTotOgniElemento = prezzoOgniElementoSingolo * quantitàOgniElemento;
-    // console.log("prezzoTotOgniElemento " + prezzoTotOgniElemento);
-    array = [];
-    array.push(prezzoTotOgniElemento);
-    //console.log(typeof array);
-    array.join("");
-    console.log(array);
+function loopUntil(num) {
+  let n = Math.floor(Math.random() * 9);
+  for (let i = 0; i < n.length; i++) {
+    console.log(n);
   }
-  return array;
+  return n;
 }
 
-console.log(shoppingCartTotal(shoppingCart));
-
-function calcolaTotProdottiXQuantita(ar) {
-  let result = ar.reduce((a, b) => a + b, 0);
-  return result;
-}
-s;
-
-console.log(calcolaTotProdottiXQuantita(shoppingCartTotal(shoppingCart)));
+console.log(loopUntil(2));
